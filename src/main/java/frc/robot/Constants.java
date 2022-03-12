@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import frc.robot.commands.ClimbingSystem.RaisingMechanism.LeftRaisingMechanism;
-
 public final class Constants {
  public class Motors{
     public  class DriveMotors{
@@ -34,18 +32,20 @@ public final class Constants {
     public static final class MotorSpeeds{
 
  //Need to bug Test all Shooter and climber motor speeds and directions
-  public static class IntakeShooterValues {
+    public static class IntakeShooterValues {
         public static double m_intakeMotorSpeed = .5;
         public static double m_shooterMotorSpeed = -.5;
+   }
+    public static class Climbervalues {
+        public static double m_leftMotorSpeed = .5;
+        public static double m_rightMotorSpeed = .5;
   }
-  public static class Climbervalues {
-      public static double m_leftMotorSpeed = .5;
-  }
-  public final class AutonomousValues{
-    public static final double m_autonomousXSpeed = .25;
-    public static final double m_autonomousYSpeed = .25;
-    public static final double m_autonomousZSpeed = .25;
-    }
+    public final class AutonomousValues{
+        public static final double m_autonomousXSpeed = .25;
+        public static final double m_autonomousYSpeed = .25;
+        public static final double m_autonomousZSpeed = .25;
+ }
+}
    public  static class ArmValues{
 
         public  static double m_armHoldUp = 0.08;
@@ -58,15 +58,7 @@ public final class Constants {
         public static double m_lastBurstTime = 0;
         public static  boolean m_armUp = true;        
 }  
-
-  
-
-       
-
-        
- 
-}
-
+      
    public final class Controller{
 
         public static final int m_controller = 0;
@@ -89,12 +81,10 @@ public final class Constants {
             public static final int m_leftStickX = 0;
             public static final int m_rightStickX = 4;
 
-            //check value in driver station
+          //check value in driver station
             public static final int m_leftTrigger = 2; 
             public static final int m_rightTrigger = 3; 
-       
-
-            //public static final int m_rightStickY = 5;
+          //public static final int m_rightStickY = 5;
   
  }
 }
@@ -106,13 +96,7 @@ public final class Constants {
             public static final double m_raisingMechanismTime = 5;
             public static final double m_loweringMechanismTime = 5;
         }
-    } 
-
-    
-
-   
-
-    
+    }  
 
     public static final double m_limiter = .35;
 }

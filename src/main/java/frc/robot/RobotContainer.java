@@ -12,8 +12,9 @@ import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Sequences.AutonomousSequence;
 import frc.robot.commands.MecanumDriver;
+import frc.robot.commands.ClimbingSystem.LoweringMechanism.AButtonLoweringMechanism;
 import frc.robot.commands.ClimbingSystem.LoweringMechanism.LeftLoweringMechanism;
-import frc.robot.commands.ClimbingSystem.RaisingMechanism.LeftRaisingMechanism;
+import frc.robot.commands.ClimbingSystem.RaisingMechanism.AButtonRaisingDetector;
 import frc.robot.commands.IntakeShooterSystem.Intake;
 import frc.robot.commands.IntakeShooterSystem.Shooter;
 
@@ -40,7 +41,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     Robot.m_driveTrain.setDefaultCommand(new MecanumDriver());
     Robot.m_intakeShooter.setDefaultCommand(new Intake());
-    Robot.m_climber.setDefaultCommand(new LeftRaisingMechanism(Constants.Timings.ClimberTimings.m_raisingMechanismTime));
+    Robot.m_climber.setDefaultCommand(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_raisingMechanismTime));
 
 
 
@@ -52,7 +53,9 @@ public class RobotContainer {
 
   public RobotContainer() {
     rBumper.whileHeld(new Shooter());
-    lBumper.whileHeld(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_loweringMechanismTime));
+    lBumper.whileHeld(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_raisingMechanismTime));
+    aButton.whileHeld(new AButtonRaisingDetector(Constants.Timings.ClimberTimings.m_raisingMechanismTime));
+    aButton.whileHeld(new AButtonLoweringMechanism(Constants.Timings.ClimberTimings.m_loweringMechanismTime));
     // Configure the button bindings
     configureButtonBindings();
   }

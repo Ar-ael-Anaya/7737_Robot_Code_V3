@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class LeftRaisingMechanism extends CommandBase {
+public class RightRaisingMechanism extends CommandBase {
   Timer m_timer = new Timer();
   double m_time;
  
   
   
-  public LeftRaisingMechanism(double time) {
+  public RightRaisingMechanism(double time) {
     m_time = time;
    addRequirements(Robot.m_climber);
   }
@@ -30,7 +30,7 @@ public class LeftRaisingMechanism extends CommandBase {
   public void execute() {
     double leftTrigger = (Robot.m_robotContainer.GetDriverRawAxis(Constants.Controller.Joystick.m_leftTrigger)) * (Constants.m_limiter);
     
-    Robot.m_climber.setLeftClimberMotorSpeed(leftTrigger);
+    Robot.m_climber.setRightClimberMotorSpeed(leftTrigger);
   }
 
   // Called once the command ends or is interrupted.
@@ -41,7 +41,7 @@ public class LeftRaisingMechanism extends CommandBase {
   @Override
   public boolean isFinished() {
     if (m_timer.hasElapsed(m_time)){
-      Robot.m_climber.setLeftClimberMotorSpeed(0);
+      Robot.m_climber.setRightClimberMotorSpeed(0);
       return true;
     }
     return false;

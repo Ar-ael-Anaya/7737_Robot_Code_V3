@@ -13,9 +13,7 @@ public class Arm extends SubsystemBase {
   PWMSparkMax armMotor = new PWMSparkMax(Constants.Motors.ArmMotors.m_armMotor);
 
 
-  public Arm() {
-       
-      }
+  public Arm() {}
 
   @Override
   public void periodic() {

@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.MecanumDriver;
-import frc.robot.commands.ClimbingSystem.RaisingMechanism.LeftRaisingMechanism;
 import frc.robot.commands.IntakeShooterSystem.Intake;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Climber;
@@ -33,28 +32,15 @@ public class Robot extends TimedRobot {
 
  public static Climber m_climber = new Climber();
 
- 
-
  public static Arm m_arm = new Arm();
 
  public static MecanumDriver m_mecanumDriver = new MecanumDriver();
  public static Intake  m_intake = new Intake();
 
-
-
- 
-
-
-
-
-  private Command m_autonomousCommand;
+ private Command m_autonomousCommand;
   
-
-  public static RobotContainer m_robotContainer = new RobotContainer();
+ public static RobotContainer m_robotContainer = new RobotContainer();
   
-  
-  
-
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -65,9 +51,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
   }
-
  
-  
   @Override
   public void robotPeriodic() {
   

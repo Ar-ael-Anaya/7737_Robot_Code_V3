@@ -24,9 +24,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-    
-  }
+  public void periodic() {}
 
   public void setMotorSpeed(double xAxis, double yAxis, double  zAxis){
     Robot.m_robotDrive.driveCartesian(xAxis, yAxis, zAxis, 0.0);
