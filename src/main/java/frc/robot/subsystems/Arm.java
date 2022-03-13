@@ -19,6 +19,8 @@ public class Arm extends SubsystemBase {
   public void periodic() {
 
   }
-
+public void setArmMotorSpeed(double axis){
+  armMotor.set(axis);
+}
 
 }

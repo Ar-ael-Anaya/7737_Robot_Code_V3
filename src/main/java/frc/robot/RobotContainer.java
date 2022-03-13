@@ -12,9 +12,11 @@ import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Sequences.AutonomousSequence;
 import frc.robot.commands.MecanumDriver;
-import frc.robot.commands.ClimbingSystem.LoweringMechanism.AButtonLoweringMechanism;
+import frc.robot.commands.ArmMechanism.ArmLoweringMechanism;
+import frc.robot.commands.ArmMechanism.ArmRaisingMechanism;
 import frc.robot.commands.ClimbingSystem.LoweringMechanism.LeftLoweringMechanism;
-import frc.robot.commands.ClimbingSystem.RaisingMechanism.AButtonRaisingDetector;
+import frc.robot.commands.ClimbingSystem.LoweringMechanism.RIghtSideLowering.AButtonLoweringMechanism;
+import frc.robot.commands.ClimbingSystem.RaisingMechanism.RightSideRaising.AButtonRaisingDetector;
 import frc.robot.commands.IntakeShooterSystem.Intake;
 import frc.robot.commands.IntakeShooterSystem.Shooter;
 
@@ -41,7 +43,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     Robot.m_driveTrain.setDefaultCommand(new MecanumDriver());
     Robot.m_intakeShooter.setDefaultCommand(new Intake());
-    Robot.m_climber.setDefaultCommand(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_raisingMechanismTime));
+    Robot.m_climber.setDefaultCommand(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_ClimberRaisingMechanismTime));
 
 
 
@@ -53,9 +55,11 @@ public class RobotContainer {
 
   public RobotContainer() {
     rBumper.whileHeld(new Shooter());
-    lBumper.whileHeld(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_raisingMechanismTime));
-    aButton.whileHeld(new AButtonRaisingDetector(Constants.Timings.ClimberTimings.m_raisingMechanismTime));
-    aButton.whileHeld(new AButtonLoweringMechanism(Constants.Timings.ClimberTimings.m_loweringMechanismTime));
+    lBumper.whileHeld(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_ClimberRaisingMechanismTime));
+    aButton.whileHeld(new AButtonRaisingDetector(Constants.Timings.ClimberTimings.m_ClimberRaisingMechanismTime));
+    aButton.whileHeld(new AButtonLoweringMechanism(Constants.Timings.ClimberTimings.m_ClimberloweringMechanismTime));
+    xButton.whileHeld(new ArmLoweringMechanism(Constants.Timings.ArmTimings.m_ArmLoweringMechanismTime));
+    bButton.whileHeld(new ArmRaisingMechanism(Constants.Timings.ArmTimings.m_ArmRaisingMechanismTime));
     // Configure the button bindings
     configureButtonBindings();
   }

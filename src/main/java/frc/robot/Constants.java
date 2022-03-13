@@ -5,41 +5,51 @@
 package frc.robot;
 
 public final class Constants {
- public class Motors{
+ public class Motors{     
+   
     public  class DriveMotors{
-
+         // values change depending on wiring
         public static final int m_frontleft = 0;
         public static final int m_rearleft = 1;
         public static final int m_frontRight = 2;
         public static final int m_rearRight = 3;
 
    }
+
    public class ClimberMotors{
+        // values change depending on wiring
        public static final int m_leftClimber = 6;
        public static final int m_rightClimber = 7;
    }
-    // values change depending on wiring
-    public final class IntakeShooterMotors{
 
+    public final class IntakeShooterMotors{
+         // values change depending on wiring
         public static final int m_intakeShooterMotor = 4;
   }
 
     public class ArmMotors{
-
+         // values change depending on wiring
         public static final int m_armMotor = 5;
  }
 }
     public static final class MotorSpeeds{
 
- //Need to bug Test all Shooter and climber motor speeds and directions
+
     public static class IntakeShooterValues {
+        //invert negative depending on motor orientation
         public static double m_intakeMotorSpeed = .5;
         public static double m_shooterMotorSpeed = -.5;
    }
     public static class Climbervalues {
+        //invert negative depending on motor orientation
         public static double m_leftMotorSpeed = .5;
         public static double m_rightMotorSpeed = .5;
   }
+    public static class ArmValues{
+        //invert negative depending on motor orientation
+        public static double m_armRaisingMotorSpeed = .5;
+        public static double m_armLoweringMotorSpeed = -.5;
+    }
     public final class AutonomousValues{
         public static final double m_autonomousXSpeed = .25;
         public static final double m_autonomousYSpeed = .25;
@@ -47,15 +57,6 @@ public final class Constants {
  }
 }
    public  static class ArmValues{
-
-        public  static double m_armHoldUp = 0.08;
-        public  static double m_armHoldDown = 0.13;
-        public  static double m_armTravel = 0.5;
-  
-        public  static double m_armTimeUp = 0.5;
-        public static double m_armTimeDown = 0.35;  
-    
-        public static double m_lastBurstTime = 0;
         public static  boolean m_armUp = true;        
 }  
       
@@ -90,11 +91,20 @@ public final class Constants {
 }
     public final class Timings{
         public final class AutonomousTimings{
-        public static final double m_autonomousTime = 40;
+            //Adjust depending on competition rules
+            public static final double m_autonomousTime = 40;
         }
+
         public final class ClimberTimings{
-            public static final double m_raisingMechanismTime = 5;
-            public static final double m_loweringMechanismTime = 5;
+            //Adjust based on testing and Speed choosen 
+            public static final double m_ClimberRaisingMechanismTime = 5;
+            public static final double m_ClimberloweringMechanismTime = 5;
+        }
+
+        public final class ArmTimings{
+            //Adjust based on testing and Speed choosen
+            public static final double m_ArmLoweringMechanismTime = 5;
+            public static final double m_ArmRaisingMechanismTime = 5;
         }
     }  
 

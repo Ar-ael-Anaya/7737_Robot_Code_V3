@@ -2,31 +2,33 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.ClimbingSystem.RaisingMechanism;
+package frc.robot.commands.ClimbingSystem.LoweringMechanism.RIghtSideLowering;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
 
-public class AButtonRaisingDetector extends CommandBase {
+public class AButtonLoweringMechanism extends CommandBase {
   double m_time;
-  public AButtonRaisingDetector(double time) {
-  m_time = time;
+  public AButtonLoweringMechanism(double time) {
+ m_time = time;
   }
 
-  
+
   @Override
   public void initialize() {}
 
-  
+
   @Override
+  
   public void execute() {
-  new RightRaisingMechanism(m_time);
+    Robot.m_robotContainer.lBumper.whileHeld(new RightLoweringMechanism(m_time));
   }
 
-  // Called once the command ends or is interrupted.
+
   @Override
   public void end(boolean interrupted) {}
 
-  // Returns true when the command should end.
+
   @Override
   public boolean isFinished() {
     return false;
