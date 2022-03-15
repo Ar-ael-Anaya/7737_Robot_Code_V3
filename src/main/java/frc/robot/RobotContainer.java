@@ -15,8 +15,8 @@ import frc.robot.commands.MecanumDriver;
 import frc.robot.commands.ArmMechanism.ArmLoweringMechanism;
 import frc.robot.commands.ArmMechanism.ArmRaisingMechanism;
 import frc.robot.commands.ClimbingSystem.LoweringMechanism.LeftLoweringMechanism;
-import frc.robot.commands.ClimbingSystem.LoweringMechanism.RIghtSideLowering.AButtonLoweringMechanism;
-import frc.robot.commands.ClimbingSystem.RaisingMechanism.RightSideRaising.AButtonRaisingDetector;
+import frc.robot.commands.ClimbingSystem.LoweringMechanism.RightLoweringMechanism;
+import frc.robot.commands.ClimbingSystem.RaisingMechanism.RightRaisingMechanism;
 import frc.robot.commands.IntakeShooterSystem.Intake;
 import frc.robot.commands.IntakeShooterSystem.Shooter;
 
@@ -56,8 +56,16 @@ public class RobotContainer {
   public RobotContainer() {
     rBumper.whileHeld(new Shooter());
     lBumper.whileHeld(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_ClimberRaisingMechanismTime));
-    aButton.whileHeld(new AButtonRaisingDetector(Constants.Timings.ClimberTimings.m_ClimberRaisingMechanismTime));
-    aButton.whileHeld(new AButtonLoweringMechanism(Constants.Timings.ClimberTimings.m_ClimberloweringMechanismTime));
+    aButton.and(lBumper).whenActive(new RightLoweringMechanism(Constants.Timings.ClimberTimings.m_ClimberloweringMechanismTime));
+  
+  
+    if (aButton.get()){
+     Robot.m_climber.setDefaultCommand(new RightRaisingMechanism(Constants.Timings.ClimberTimings.m_ClimberRaisingMechanismTime));
+   }else{
+    Robot.m_climber.setDefaultCommand(new LeftLoweringMechanism(Constants.Timings.ClimberTimings.m_ClimberRaisingMechanismTime));     
+   }
+  
+  
     xButton.whileHeld(new ArmLoweringMechanism(Constants.Timings.ArmTimings.m_ArmLoweringMechanismTime));
     bButton.whileHeld(new ArmRaisingMechanism(Constants.Timings.ArmTimings.m_ArmRaisingMechanismTime));
     // Configure the button bindings
